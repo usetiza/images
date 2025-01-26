@@ -1,0 +1,5 @@
+for f in $(find . -type f -name '*.jpg' | grep image); do mv "$f" "$(echo "$f" | sed s/.jpg_00.jpg/.jpg/)"; done
+for f in $(find . -type f -name '*.jpg' | grep thumbnail); do cp "$f" "$f.bkp"; done
+for f in $(find . -type f -name '*.bkp' | grep thumbnail); do convert -resize 65% "$f" "$(echo "$f" | sed s/.jpg.bkp/.jpg/)"; done
+
+
